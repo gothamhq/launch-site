@@ -1,0 +1,21 @@
+baseurl = "https://gothamhq.com/"
+title = "GothamHQ"
+author = "GothamHQ"
+canonifyurls = true
+paginate = 3
+languageCode = "en-us"
+
+theme = "hugo-theme-lean-launch-page"
+
+googleAnalytics = "UA-168801020-2"
+
+[params]
+tagline = "A modern static site generator with a focus on documentation and community."
+mailchimpURL = "//GothamHQ.us10.list-manage.com/subscribe/post?u=7f338e01cc17cfe5cb4c64874&amp;id=67298dfc5c"
+
+twitter = "https://twitter.com/GothamHQ_"
+facebook = "https://www.facebook.com/GothamHQ"
+instagram = "https://www.instagram.com/gothamhq_/"
+
+#https://github.com/gothamhq
+#https://www.linkedin.com/company/gotham
