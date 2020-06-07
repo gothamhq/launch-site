@@ -1,0 +1,37 @@
+version: 2.1
+workflows:
+  main:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
+jobs:
+  build:
+    docker:
+      - image: cibuilds/hugo:0.40.3
+    steps:
+      - checkout
+      - run:
+          name: "Build Website with Hugo"
+          command: HUGO_ENV=production hugo -v
+      - persist_to_workspace:
+          root: .
+          paths:
+            - public
+
+  deploy:
+    docker:
+      - image: cibuilds/hugo:0.40.3
+    steps:
+      - attach_workspace:
+          at: .
+      - add_ssh_keys
+      - run:
+          name: "Deploy to Revidian Cloud Infrastructure"
+          command: |
+            echo 'sweb0.revidian.net ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHyIA/VJN9GHUeYUvauk+sGsQcvk8FpXErixwvgqQmW1pdje/Vo4RyAAskzdgoR+HUYOWM1gLW7ZFZHL8F//sqw=' >> ~/.ssh/known_hosts
+            rsync -va --delete ./public/ root@sweb0.revidian.net:/static-websites/gothamhq/launch-site/public_html
