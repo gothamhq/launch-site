@@ -1,4 +1,4 @@
-baseurl = "https://gothamhq.com/"
+baseurl = "http://gothamhq.com/"
 title = "GothamHQ"
 author = "GothamHQ"
 canonifyurls = true
