@@ -12,12 +12,12 @@ workflows:
 jobs:
   build:
     docker:
-      - image: cibuilds/hugo:0.72.0
+      - image: hubci/gotham:0.1
     steps:
       - checkout
       - run:
-          name: "Build Website with Hugo"
-          command: HUGO_ENV=production hugo -v
+          name: "Build Website with Gotham"
+          command: HUGO_ENV=production gotham -v
       - persist_to_workspace:
           root: .
           paths:
@@ -25,7 +25,7 @@ jobs:
 
   deploy:
     docker:
-      - image: cibuilds/hugo:0.72.0
+      - image: hubci/gotham:0.1
     steps:
       - attach_workspace:
           at: .
