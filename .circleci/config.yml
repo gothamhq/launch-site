@@ -12,12 +12,15 @@ workflows:
 jobs:
   build:
     docker:
-      - image: hubci/gotham:0.1
+      - image: hubci/gotham:0.2
     steps:
       - checkout
       - run:
           name: "Build Website with Gotham"
-          command: HUGO_ENV=production gotham -v
+          command: |
+            gotham version --type=detailed
+            echo "======================================================="
+            HUGO_ENV=production gotham -v
       - persist_to_workspace:
           root: .
           paths:
@@ -25,7 +28,7 @@ jobs:
 
   deploy:
     docker:
-      - image: hubci/gotham:0.1
+      - image: hubci/gotham:0.2
     steps:
       - attach_workspace:
           at: .
