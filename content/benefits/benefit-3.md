@@ -3,4 +3,4 @@ title: "Sign Up Today"
 icon: "fa-check"
 weight: 3
 ---
-Sign up so we can let you know when Gotham launches.
+Sign up to stay up to date with Gotham. We'll share updates as they become available.
